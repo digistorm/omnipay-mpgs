@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/mpgs",
+    "name": "digistorm/omnipay-mgps",
     "type": "library",
     "description": "Mastercard Payment Gateway Service (MPGS) driver for the Omnipay payment processing library",
     "keywords": [
