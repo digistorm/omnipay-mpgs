@@ -1,0 +1,31 @@
+HTTP/1.1 200 OK
+Cache-Control: private,no-store,no-cache,must-revalidate,proxy-revalidate
+Pragma: no-cache
+Content-Length: 884
+Content-Type: application/json; charset=utf-8
+Set-Cookie: ASP.NET_SessionId=wlliqq4uutv42xh0hfu134xy; path=/; secure; HttpOnly
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Max-Age: 1728000
+Date: Fri, 12 Dec 2014 01:15:15 GMT
+
+{
+  "merchant": "TEST123",
+  "order": {
+    "id": "abcdef123456",
+    "amount": "10.00",
+    "currency": "AUD",
+    "creationTime": "2022-12-24T23:59:59Z"
+  },
+  "response": {
+    "gatewayCode": "APPROVED"
+  },
+  "result": "SUCCESS",
+  "transaction": {
+    "type": "PAYMENT",
+    "id": "abcdef123456-1",
+    "amount": "10.00",
+    "currency": "AUD"
+  }
+}

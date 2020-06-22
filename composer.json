@@ -1,0 +1,25 @@
+{
+    "name": "omnipay/mpgs",
+    "type": "library",
+    "description": "Mastercard Payment Gateway Service (MPGS) driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "mastercard payment gateway service",
+        "merchant",
+        "mpgs",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Omnipay\\Mpgs\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3"
+    },
+    "prefer-stable": true
+}
