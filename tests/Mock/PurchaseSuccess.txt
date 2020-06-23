@@ -11,21 +11,86 @@ Access-Control-Max-Age: 1728000
 Date: Fri, 12 Dec 2014 01:15:15 GMT
 
 {
-  "merchant": "TEST123",
-  "order": {
-    "id": "abcdef123456",
-    "amount": "10.00",
-    "currency": "AUD",
-    "creationTime": "2022-12-24T23:59:59Z"
-  },
-  "response": {
-    "gatewayCode": "APPROVED"
-  },
-  "result": "SUCCESS",
-  "transaction": {
-    "type": "PAYMENT",
-    "id": "abcdef123456-1",
-    "amount": "10.00",
-    "currency": "AUD"
-  }
+    "authorizationResponse": {
+        "cardSecurityCodeError": "M",
+        "commercialCard": "888",
+        "commercialCardIndicator": "3",
+        "financialNetworkCode": "777",
+        "posData": "1025100006600",
+        "posEntryMode": "812",
+        "processingCode": "003000",
+        "responseCode": "00",
+        "stan": "36308",
+        "transactionIdentifier": "123456789"
+    },
+    "gatewayEntryPoint": "WEB_SERVICES_API",
+    "merchant": "TESTBBL2997799",
+    "order": {
+        "amount": 10,
+        "authenticationStatus": "AUTHENTICATION_NOT_IN_EFFECT",
+        "chargeback": {
+            "amount": 0,
+            "currency": "AUD"
+        },
+        "creationTime": "2020-06-23T06:14:05.592Z",
+        "currency": "AUD",
+        "id": "5ef19dac9f8ba",
+        "merchantAmount": 10,
+        "merchantCategoryCode": "8299",
+        "merchantCurrency": "AUD",
+        "reference": "Here is a description that is over 40 ch",
+        "status": "CAPTURED",
+        "totalAuthorizedAmount": 10,
+        "totalCapturedAmount": 10,
+        "totalRefundedAmount": 0
+    },
+    "response": {
+        "acquirerCode": "00",
+        "acquirerMessage": "Approved",
+        "cardSecurityCode": {
+            "acquirerCode": "M",
+            "gatewayCode": "MATCH"
+        },
+        "gatewayCode": "APPROVED"
+    },
+    "result": "SUCCESS",
+    "sourceOfFunds": {
+        "provided": {
+            "card": {
+                "brand": "MASTERCARD",
+                "expiry": {
+                    "month": "5",
+                    "year": "21"
+                },
+                "fundingMethod": "DEBIT",
+                "issuer": "FISERV SOLUTIONS, LLC",
+                "number": "511111xxxxxx1118",
+                "scheme": "MASTERCARD",
+                "storedOnFile": "NOT_STORED"
+            }
+        },
+        "type": "CARD"
+    },
+    "timeOfRecord": "2020-06-23T06:14:05.600Z",
+    "transaction": {
+        "acquirer": {
+            "batch": 20200623,
+            "date": "0623",
+            "id": "BENDIGO_S2I",
+            "merchantId": "2997799",
+            "settlementDate": "2020-06-23",
+            "timeZone": "+1000",
+            "transactionId": "123456789"
+        },
+        "amount": 10,
+        "authenticationStatus": "AUTHENTICATION_NOT_IN_EFFECT",
+        "authorizationCode": "036308",
+        "currency": "AUD",
+        "id": "5ef19dac9f8ba-1",
+        "receipt": "017506036308",
+        "source": "INTERNET",
+        "terminal": "BDGS2I02",
+        "type": "PAYMENT"
+    },
+    "version": "56"
 }
