@@ -4,7 +4,7 @@
 
 MPGS Rest API: https://test-gateway.mastercard.com/api/documentation/integrationGuidelines/index.html?locale=en_US
 
-Currently only supports purchases with one available methods:
+Currently only supports purchases with one available method:
 
 - purchase()
 
