@@ -11,7 +11,7 @@ class PurchaseRequestTest extends TestCase
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
             [
-                'endpointBase' => 'https://bendigo.ap.gateway.mastercard.com/api/rest/version/56',
+                'endpointBase' => 'https://bendigo.ap.gateway.mastercard.com',
                 'merchantId' => 'TEST123',
                 'password' => 'pass654321',
                 'transactionId' => uniqid(),

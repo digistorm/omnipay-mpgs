@@ -43,7 +43,7 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'endpointBase' => 'https://bendigo.ap.gateway.mastercard.com/api/rest/version/56',
+            'endpointBase' => 'https://bendigo.ap.gateway.mastercard.com',
             'merchantId' => '',
             'password' => '',
         ];

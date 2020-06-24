@@ -15,8 +15,8 @@ class AbstractRequestTest extends TestCase
 
     public function testEndpointBase()
     {
-        $this->assertSame($this->request, $this->request->setEndpointBase('https://bendigo.ap.gateway.mastercard.com/api/rest/version/56'));
-        $this->assertSame('https://bendigo.ap.gateway.mastercard.com/api/rest/version/56', $this->request->getEndpointBase());
+        $this->assertSame($this->request, $this->request->setEndpointBase('https://bendigo.ap.gateway.mastercard.com'));
+        $this->assertSame('https://bendigo.ap.gateway.mastercard.com', $this->request->getEndpointBase());
     }
 
     public function testPassword()

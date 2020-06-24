@@ -16,7 +16,7 @@ class GatewayTest extends GatewayTestCase
 
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setTestMode(true);
-        $this->gateway->setEndpointBase('https://bendigo.ap.gateway.mastercard.com/api/rest/version/56');
+        $this->gateway->setEndpointBase('https://bendigo.ap.gateway.mastercard.com');
         $this->gateway->setMerchantId('TEST123');
         $this->gateway->setPassword('pass654321');
     }

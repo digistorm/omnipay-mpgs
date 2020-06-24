@@ -54,6 +54,9 @@ class PurchaseRequest extends AbstractRequest
     {
         $url = parent::getEndpointBase();
 
+        // Add API path & version
+        $url .= '/api/rest/version/56';
+
         // Add merchant ID
         $url .= '/merchant/' . parent::getMerchantId();
 
