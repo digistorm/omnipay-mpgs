@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Omnipay\Mpgs\Message;
 
+use Omnipay\Common\Exception\InvalidCreditCardException;
 use Omnipay\Common\Exception\InvalidRequestException;
 
 class PurchaseRequest extends AbstractRequest
 {
-
-    public function getData()
+    /**
+     * @throws InvalidRequestException
+     * @throws InvalidCreditCardException
+     */
+    public function getData(): array
     {
         $this->validate('transactionId', 'amount', 'currency');
 
@@ -47,10 +53,7 @@ class PurchaseRequest extends AbstractRequest
         return $data;
     }
 
-    /**
-     * @return string
-     */
-    public function getEndpoint()
+    public function getEndpoint(): string
     {
         $url = parent::getEndpointBase();
 
@@ -69,20 +72,12 @@ class PurchaseRequest extends AbstractRequest
         return $url;
     }
 
-    /**
-     * @return string
-     */
-    public function getHttpMethod()
+    public function getHttpMethod(): string
     {
         return 'PUT';
     }
 
-    /**
-     * @param $data
-     *
-     * @return \Omnipay\Mpgs\Message\PurchaseResponse
-     */
-    protected function createResponse($data)
+    protected function createResponse(mixed $data): PurchaseResponse
     {
         return $this->response = new PurchaseResponse($this, $data);
     }

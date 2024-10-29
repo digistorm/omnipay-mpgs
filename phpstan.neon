@@ -1,0 +1,24 @@
+includes:
+    - vendor/spaze/phpstan-disallowed-calls/extension.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
+
+parameters:
+    paths:
+        - src
+
+    # The level 9 is the highest level
+    level: 7
+
+    reportUnmatchedIgnoredErrors: false
+
+    ignoreErrors:
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
+
+    excludePaths:
+        - .git
+        - .tinkerwell
+        - deployer
+        - public
+        - resources
+        - vendor

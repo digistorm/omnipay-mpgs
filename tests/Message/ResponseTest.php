@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Omnipay\Mpgs\Message;
 
 use Omnipay\Tests\TestCase;
 
 class ResponseTest extends TestCase
 {
-    public function testPurchaseSuccess()
+    public function testPurchaseSuccess(): void
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
         $response = new PurchaseResponse($this->getMockRequest(), (string) $httpResponse->getBody());
@@ -16,7 +18,7 @@ class ResponseTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testPurchaseFailure()
+    public function testPurchaseFailure(): void
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseFailure.txt');
         $response = new PurchaseResponse($this->getMockRequest(), (string) $httpResponse->getBody());

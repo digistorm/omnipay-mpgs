@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Omnipay\Mpgs;
 
+use Carbon\Carbon;
 use Omnipay\Common\CreditCard;
+use Omnipay\Common\Exception\InvalidCreditCardException;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Mpgs\Message\PurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 /**
@@ -10,7 +16,7 @@ use Omnipay\Tests\GatewayTestCase;
  */
 class GatewayTest extends GatewayTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -22,10 +28,10 @@ class GatewayTest extends GatewayTestCase
     }
 
     /**
-     * @throws \Omnipay\Common\Exception\InvalidCreditCardException
-     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     * @throws InvalidCreditCardException
+     * @throws InvalidRequestException
      */
-    public function testPurchase()
+    public function testPurchase(): void
     {
         $request = $this->gateway->purchase([
             'transactionId' => uniqid(),
@@ -37,12 +43,12 @@ class GatewayTest extends GatewayTestCase
                 'lastName' => 'Doe',
                 'number' => '5999999789012346',
                 'expiryMonth' => '03',
-                'expiryYear' => '2022',
+                'expiryYear' => Carbon::now()->addYears()->format('Y'),
                 'cvv' => '123',
             ]),
         ]);
 
-        $this->assertInstanceOf('Omnipay\Mpgs\Message\PurchaseRequest', $request);
+        $this->assertInstanceOf(PurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
 
         $data = $request->getData();
@@ -62,7 +68,7 @@ class GatewayTest extends GatewayTestCase
                         'securityCode' => '123',
                         'expiry' => [
                             'month' => '3',
-                            'year' => '22',
+                            'year' => Carbon::now()->addYears()->format('y'),
                         ],
                     ],
                 ],
