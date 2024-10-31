@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Omnipay\Mpgs\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
@@ -7,7 +9,7 @@ use Omnipay\Common\Message\RequestInterface;
 
 class PurchaseResponse extends AbstractResponse
 {
-    const GATEWAY_CODES = [
+    public const GATEWAY_CODES = [
         'ABORTED' => 'Transaction aborted by payer',
         'ACQUIRER_SYSTEM_ERROR' => 'Acquirer system error occurred processing the transaction',
         'APPROVED' => 'Transaction Approved',
@@ -49,10 +51,10 @@ class PurchaseResponse extends AbstractResponse
 
     public function __construct(RequestInterface $request, $data)
     {
-        parent::__construct($request, json_decode($data, true));
+        parent::__construct($request, json_decode((string) $data, true));
     }
 
-    public function isSuccessful()
+    public function isSuccessful(): bool
     {
         if (!isset($this->data['result'])) {
             return false;
@@ -72,13 +74,8 @@ class PurchaseResponse extends AbstractResponse
             'APPROVED_PENDING_SETTLEMENT',
         ];
 
-        if (!in_array($this->data['response']['gatewayCode'], $approvedCodes)) {
-            return false;
-        }
-
-        return true;
+        return in_array($this->data['response']['gatewayCode'], $approvedCodes);
     }
-
 
     /**
      * Get the error message from the response.
@@ -86,10 +83,8 @@ class PurchaseResponse extends AbstractResponse
      * Returns null if the request was successful.
      *
      * @link https://bendigo.ap.gateway.mastercard.com/api/documentation/apiDocumentation/rest-json/version/latest/operation/Transaction%3a%20%20Pay.html?locale=en_US
-     *
-     * @return string|null
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         if ($this->isSuccessful()) {
             return null;
@@ -108,27 +103,17 @@ class PurchaseResponse extends AbstractResponse
 
     /**
      * Get the payment gateway code
-     * @return mixed|string|null
      */
-    public function getCode()
+    public function getCode(): ?string
     {
-        if (isset($this->data['response']['gatewayCode'])) {
-            return $this->data['response']['gatewayCode'];
-        }
-
-        return null;
+        return $this->data['response']['gatewayCode'] ?? null;
     }
-
 
     /**
      * Gateway Reference
-     *
-     * @return null|string A reference provided by the gateway to represent this transaction
      */
-    public function getTransactionReference()
+    public function getTransactionReference(): ?string
     {
-        if (isset($this->data['transaction']['id'])) {
-            return $this->data['transaction']['id'];
-        }
+        return $this->data['transaction']['id'] ?? null;
     }
 }
